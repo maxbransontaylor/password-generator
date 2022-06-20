@@ -129,6 +129,16 @@ function generatePassword() {
   if (confirmSpecial) {
     addToPool(specialPool);
   }
+  if (characterPool.length === 0) {
+    window.alert("Please select atleast one criteria!");
+    return generatePassword();
+  }
+  //adds a random character from the character pool to the end of password variable until it reaches the desired length
+  for (var i = 0; i < passwordLength; i++) {
+    password += characterPool[Math.floor(Math.random() * characterPool.length)];
+  }
+
+  return password;
 }
 // Write password to the #password input
 function writePassword() {

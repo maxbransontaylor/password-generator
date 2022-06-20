@@ -98,7 +98,38 @@ var specialPool = [
   "}",
   "~",
 ];
+function generatePassword() {
+  var characterPool = [];
+  var password = "";
+  var passwordLength = window.prompt("How long is your password?(8-128)");
+  //function to add arrays to character pool
+  var addToPool = function (pool) {
+    characterPool = characterPool.concat(pool);
+  };
 
+  //using "!" to rule out all characters besides numbers
+  if ((!(passwordLength >= 8) && !(passwordLength <= 128)) || !passwordLength) {
+    window.alert("Please pick a value between 8 and 128");
+    return generatePassword();
+  }
+
+  var confirmLowercase = window.confirm("Use lowercase letters?");
+  if (confirmLowercase) {
+    addToPool(lowercasePool);
+  }
+  var confirmUppercase = window.confirm("Use uppercase letters?");
+  if (confirmUppercase) {
+    addToPool(uppercasePool);
+  }
+  var confirmNumbers = window.confirm("Use numbers?");
+  if (confirmNumbers) {
+    addToPool(numberPool);
+  }
+  var confirmSpecial = window.confirm("Use special characters?");
+  if (confirmSpecial) {
+    addToPool(specialPool);
+  }
+}
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();

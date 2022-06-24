@@ -108,7 +108,7 @@ function generatePassword() {
   };
 
   //using "!" to rule out all characters besides numbers
-  if ((!(passwordLength >= 8) && !(passwordLength <= 128)) || !passwordLength) {
+  if (!(passwordLength >= 8) || !(passwordLength <= 128) || !passwordLength) {
     window.alert("Please pick a value between 8 and 128");
     return generatePassword();
   }
